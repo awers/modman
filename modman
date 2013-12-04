@@ -751,6 +751,47 @@ elif [ "$action" = "clean" ]; then
   exit 0
 fi
 
+##########################
+# Handle "gitignore" command
+elif [ "$action" = "gitignore" ]; then
+  echo "Updating .gitignore file."
+  # create Git ignore if not exists
+  if [ ! -f .gitignore ]; then
+      touch ".gitignore"
+  fi
+
+  # create ignoring files list
+  for line in $(find .modman -name 'modman'); do
+       while read line line2
+       do
+          if [[ "$line" == *#* ]]
+          then
+              continue
+          fi
+          if [ -n "$line2" ]; then
+              ignore_files+=("$line2")
+          fi
+       done <$line
+  done
+
+  # create .gitignore files list
+  while read line
+  do
+     if [ -n "$line" ]; then
+         in_ignore+=("$line")
+     fi
+  done <.gitignore
+
+  # add file to gitignore
+  for ((i=0; i < ${#ignore_files[*]}; i++))
+      do
+          if ! [[ ${in_ignore[*]} =~ "${ignore_files[i]}" ]]; then
+              echo "${ignore_files[i]}" >> .gitignore
+          fi
+  done
+  exit 0
+fi
+
 #############################################
 # Handle all other module-specific commands
 #############################################
