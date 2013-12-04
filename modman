@@ -216,7 +216,6 @@ if [ "$action" = "init" ]; then
   fi
   echo "Initialized Module Manager at $(pwd) $basedir"
 
-  # create Git ignore if not exists
   if [ ! -f .modman_dep ]; then
     touch ".modman_dep"
   fi
