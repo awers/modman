@@ -215,6 +215,19 @@ if [ "$action" = "init" ]; then
     basedir="with basedir at $basedir"
   fi
   echo "Initialized Module Manager at $(pwd) $basedir"
+
+  # create Git ignore if not exists
+  if [ ! -f .modman_dep ]; then
+    touch ".modman_dep"
+  fi
+
+  while read line
+  do
+     if [ -n "$line" ]; then
+       modman clone "$line"
+     fi
+  done <.modman_dep
+
   exit 0
 ###########################
 # Handle "--help" command
