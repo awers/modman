@@ -753,7 +753,7 @@ fi
 
 ##########################
 # Handle "gitignore" command
-elif [ "$action" = "gitignore" ]; then
+if [ "$action" = "gitignore" ]; then
   echo "Updating .gitignore file."
   # create Git ignore if not exists
   if [ ! -f .gitignore ]; then
