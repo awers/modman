@@ -796,7 +796,7 @@ fi
 # Handle all other module-specific commands
 #############################################
 
-REGEX_ACTION='^(update|deploy|checkout|clone|hgclone|link|remove)$'
+REGEX_ACTION='^(update|deploy|checkout|clone|hgclone|link|remove|gitignore)$'
 REGEX_NEW_MODULE='^(checkout|clone|hgclone|link)$'
 REGEX_BAD_MODULE="($REGEX_ACTION| )"
 REGEX_MODULE='^[a-zA-Z0-9_-]+$'
