@@ -776,7 +776,7 @@ if [ "$action" = "gitignore" ]; then
   for line in $(find .modman -name 'modman'); do
        while read line line2
        do
-          if [[ "$line" == *#* ]]
+          if [[ "$line" == *#* ]] || [[ "$line" == *@* ]]
           then
               continue
           fi
