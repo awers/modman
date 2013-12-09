@@ -223,7 +223,7 @@ if [ "$action" = "init" ]; then
   while read line
   do
      if [ -n "$line" ]; then
-       modman clone "$line"
+       modman clone $line
      fi
   done <.modman_dep
 
